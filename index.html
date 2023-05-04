@@ -1,0 +1,67 @@
+# 定义问题和答案
+questions = [
+    {
+        'question': '你从下图中最先看到什么？',
+        'options': [
+            {'option': '骷髅头', 'score': 2},
+            {'option': '两个姑娘', 'score': 1}
+        ]
+    },
+    {
+        'question': '下图藏了一只动物，你看到的是什么？',
+        'options': [
+            {'option': '鸭子', 'score': 2},
+            {'option': '兔子', 'score': 1}
+        ]
+    },
+    {
+        'question': '你觉得下图谁更蠢一些？',
+        'options': [
+            {'option': '1号', 'score': 3},
+            {'option': '2号', 'score': 2},
+            {'option': '3号', 'score': 4},
+            {'option': '4号', 'score': 1}
+        ]
+    },
+    {
+        'question': '假如下面四件事同时发生，你会先做哪件？',
+        'options': [
+            {'option': '有人敲门', 'score': 3},
+            {'option': '电熨斗忘记关', 'score': 4},
+            {'option': '狗在撕地毯', 'score': 2},
+            {'option': '宝宝哭了', 'score': 1}
+        ]
+    },
+    {
+        'question': '下面四位朋友挥手再见，下一秒谁会先受伤？',
+        'options': [
+            {'option': 'A', 'score': 4},
+            {'option': 'B', 'score': 3},
+            {'option': 'C', 'score': 2},
+            {'option': 'D', 'score': 1}
+        ]
+    }
+]
+
+# 计算总得分
+def calculate_score(answers):
+    total_score = 0
+    for i, answer in enumerate(answers):
+        total_score += questions[i]['options'][answer]['score']
+    return total_score
+
+# 根据总得分返回相应的结果
+def get_result(score):
+    if score >= 5 and score <= 8:
+        return '表明你是一个遇事消极、逃避抱怨的人。...'
+    elif score >= 9 and score <= 11:
+        return '表明你是一个遇事慌忙、急于求成的人。...'
+    elif score >= 12 and score <= 14:
+        return '表明你是一个争强好胜的人。...'
+    elif score >= 15 and score <= 16:
+        return '表明你是一个遇事勤恳、脚踏实地的人。...'
+    else:
+        return '总得分无效，请重新答题。'
+
+# 定义网页的视图函数
+from flask import Flask
